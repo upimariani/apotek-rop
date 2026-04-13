@@ -26,8 +26,8 @@
 											echo '<span class="badge badge-danger text-light">Belum Bayar</span>';
 										} else if ($value->status == '1') {
 											echo '<span class="badge badge-success text-warning">Menunggu Konfirmasi</span>';
-										} else {
-											echo '<span class="badge badge-success text-success">Selesai</span>';
+										} else if ($value->status == '2') {
+											echo '<span class="badge badge-success text-light">Selesai</span>';
 										} ?></td>
 									<td class="text-center"><a href="<?= base_url('Pelanggan/cPesananSaya/detail/' . $value->id_obat_keluar) ?>" class="btn btn-warning">...</a></td>
 								</tr>

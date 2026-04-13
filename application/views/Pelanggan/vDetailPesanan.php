@@ -26,7 +26,7 @@
 													} else if ($pesanan_saya->status == '1') {
 														echo '<span class="badge badge-success text-warning">Menunggu Konfirmasi</span>';
 													} else {
-														echo '<span class="badge badge-success text-success">Selesai</span>';
+														echo '<span class="badge badge-success text-light">Selesai</span>';
 													} ?></span>
 						</li>
 						<?php

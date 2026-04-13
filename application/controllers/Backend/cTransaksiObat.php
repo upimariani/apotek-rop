@@ -7,7 +7,7 @@ class cTransaksiObat extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'transaksi' => $this->db->query("SELECT * FROM `obat_keluar` JOIN pelanggan ON obat_keluar.id_pelanggan=obat_keluar.id_pelanggan")->result()
+			'transaksi' => $this->db->query("SELECT * FROM `obat_keluar` JOIN pelanggan ON obat_keluar.id_pelanggan=pelanggan.id_pelanggan")->result()
 		);
 		$this->load->view('Backend/Layout/header');
 		$this->load->view('Backend/vTransaksiObat', $data);
@@ -30,8 +30,8 @@ class cTransaksiObat extends CI_Controller
 		);
 		$this->db->where('id_obat_keluar', $id_obat_keluar);
 		$this->db->update('obat_keluar', $data);
-		$this->session->set_flashdata('success', 'Transaksi berhasil dikonfirmasi');
-		redirect('Backend/cTransaksiObat');
+
+		redirect('Backend/cAnalisis');
 	}
 }
 

@@ -45,7 +45,8 @@
 			<div class="m-header">
 				<a href="../dashboard/index.html" class="b-brand text-primary">
 					<!-- ========   Change your logo from here   ============ -->
-					<img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+					<!-- <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo"> -->
+					<h4 class="text-muted">Apotek Anugrah Farma</h4>
 				</a>
 			</div>
 			<div class="navbar-content">
@@ -55,22 +56,28 @@
 										}  ?>">
 						<a href="<?= base_url('Backend/cDashboard') ?>" class="pc-link">
 							<span class="pc-micon"><i class="ti ti-dashboard"></i></span>
-							<span class="pc-mtext">Dashboard <?= $this->session->userdata('id_user') ?></span>
+							<span class="pc-mtext">Dashboard</span>
 						</a>
 					</li>
+					<?php
+					if ($this->session->userdata('id_user') == '2') {
+					?>
+						<li class="pc-item pc-caption">
+							<label>Kelola Data</label>
+							<i class="ti ti-dashboard"></i>
+						</li>
+						<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cObat') {
+												echo 'active';
+											}  ?>">
+							<a href="<?= base_url('Backend/cObat') ?>" class="pc-link">
+								<span class="pc-micon"><i class="ti ti-typography"></i></span>
+								<span class="pc-mtext">Obat</span>
+							</a>
+						</li>
+					<?php
+					}
+					?>
 
-					<li class="pc-item pc-caption">
-						<label>Kelola Data</label>
-						<i class="ti ti-dashboard"></i>
-					</li>
-					<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cObat') {
-											echo 'active';
-										}  ?>">
-						<a href="<?= base_url('Backend/cObat') ?>" class="pc-link">
-							<span class="pc-micon"><i class="ti ti-typography"></i></span>
-							<span class="pc-mtext">Obat</span>
-						</a>
-					</li>
 
 
 					<li class="pc-item pc-caption">
@@ -85,14 +92,21 @@
 							<span class="pc-mtext">Pemesanan Obat</span>
 						</a>
 					</li>
-					<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cTransaksiObat') {
-											echo 'active';
-										}  ?>">
-						<a href="<?= base_url('Backend/cTransaksiObat') ?>" class="pc-link">
-							<span class="pc-micon"><i class="ti ti-user-plus"></i></span>
-							<span class="pc-mtext">Transaksi Obat</span>
-						</a>
-					</li>
+					<?php
+					if ($this->session->userdata('id_user') != '2') {
+					?>
+						<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cTransaksiObat') {
+												echo 'active';
+											}  ?>">
+							<a href="<?= base_url('Backend/cTransaksiObat') ?>" class="pc-link">
+								<span class="pc-micon"><i class="ti ti-user-plus"></i></span>
+								<span class="pc-mtext">Transaksi Obat</span>
+							</a>
+						</li>
+					<?php
+					}
+					?>
+
 
 
 
@@ -156,7 +170,7 @@
 																echo 'Supplier';
 															} else {
 																echo 'Pemilik';
-															} ?>n</h6>
+															} ?></h6>
 										<span>Apotek Anugrah Farma</span>
 									</div>
 									<a href="<?= base_url('Backend/cLogin/logout') ?>" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>

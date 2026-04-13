@@ -7,13 +7,9 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="page-header-title">
-							<h5 class="m-b-10">Home</h5>
+							<h5 class="m-b-10">Informasi Obat</h5>
 						</div>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-							<li class="breadcrumb-item" aria-current="page">Home</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -24,7 +20,6 @@
 			<!-- [ sample-page ] start -->
 
 			<div class="col-md-12 col-xl-12">
-				<h5 class="mb-3">Recent Orders</h5>
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
 					Tambah Data Obat
@@ -51,27 +46,37 @@
 
 								<div class="mb-3">
 									<label for="exampleInputEmail1" class="form-label">Nama Obat</label>
-									<input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+									<input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 									<div id="emailHelp" class="form-text">Masukkan Nama Obat (ex: Paracetamol)</div>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Keterangan</label>
-									<input type="text" name="keterangan" class="form-control" id="exampleInputPassword1">
+									<input type="text" name="keterangan" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Keterangan Obat (ex: pcs, botol, strip)</div>
 								</div>
 								<div class="mb-3">
-									<label for="exampleInputPassword1" class="form-label">Harga</label>
-									<input type="nnumber" name="harga" class="form-control" id="exampleInputPassword1">
+									<label for="exampleInputPassword1" class="form-label">Harga Paket</label>
+									<input type="nnumber" name="harga_paket" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
 								</div>
 								<div class="mb-3">
-									<label for="exampleInputPassword1" class="form-label">Stok</label>
-									<input type="number" name="stok" class="form-control" id="exampleInputPassword1">
+									<label for="exampleInputPassword1" class="form-label">Harga Satuan</label>
+									<input type="nnumber" name="harga" class="form-control" id="exampleInputPassword1" required>
+									<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Stok per Paket</label>
+									<input type="number" name="stok_paket" class="form-control" id="exampleInputPassword1" required>
+									<div id="emailHelp" class="form-text">Masukkan Stok Paket Obat (ex: 1)</div>
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Stok per Satuan</label>
+									<input type="number" name="stok" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Stok Awal Obat (ex: 1)</div>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Lead Time <span class="text-sm text-danger">(Waktu Lama Pengiriman /hari)</span></label>
-									<input type="number" name="lead_time" class="form-control" id="exampleInputPassword1">
+									<input type="number" name="lead_time" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Lead Time (ex: 2)</div>
 								</div>
 								<div class="mb-3">
@@ -97,8 +102,10 @@
 									<tr>
 										<th>No.</th>
 										<th>Produk</th>
-										<th>Harga</th>
-										<th>Stok</th>
+										<th>Harga Satuan</th>
+										<th>Harga Paket</th>
+										<th>Paket Obat</th>
+										<th>Satuan</th>
 										<th>Lead Time</th>
 										<th class="text-end">Action</th>
 									</tr>
@@ -114,6 +121,8 @@
 												<p><?= $value->nama_obat ?></p>
 											</td>
 											<td>Rp. <?= number_format($value->harga) ?></td>
+											<td>Rp. <?= number_format($value->harga_perbox) ?></td>
+											<td><?= $value->sat_supplier ?></td>
 											<td><span class="d-flex align-items-center gap-2"><i class="fas fa-circle text-success f-10 m-r-5"></i><?= number_format($value->stok) ?> /<?= $value->keterangan ?></span>
 											</td>
 											<td class="text-end"><?= $value->lead_time ?> /hari</td>
@@ -164,12 +173,22 @@ foreach ($obat as $key => $value) {
 						<div id="emailHelp" class="form-text">Masukkan Keterangan Obat (ex: pcs, botol, strip)</div>
 					</div>
 					<div class="mb-3">
-						<label for="exampleInputPassword1" class="form-label">Harga</label>
+						<label for="exampleInputPassword1" class="form-label">Harga Paket</label>
+						<input type="nnumber" name="harga_paket" class="form-control" value="<?= $value->harga_perbox ?>" id="exampleInputPassword1" required>
+						<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label"> Satuan</label>
 						<input type="nnumber" name="harga" value="<?= $value->harga ?>" class="form-control" id="exampleInputPassword1">
 						<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
 					</div>
 					<div class="mb-3">
-						<label for="exampleInputPassword1" class="form-label">Stok</label>
+						<label for="exampleInputPassword1" class="form-label">Stok per Paket</label>
+						<input type="number" name="stok_paket" class="form-control" value="<?= $value->sat_supplier ?>" id="exampleInputPassword1" required>
+						<div id="emailHelp" class="form-text">Masukkan Stok Paket Obat (ex: 1)</div>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label">Stok per Satuan</label>
 						<input type="number" name="stok" value="<?= $value->stok ?>" class="form-control" id="exampleInputPassword1">
 						<div id="emailHelp" class="form-text">Masukkan Stok Awal Obat (ex: 1)</div>
 					</div>

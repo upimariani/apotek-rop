@@ -7,13 +7,9 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="page-header-title">
-							<h5 class="m-b-10">Home</h5>
+							<h5 class="m-b-10">Form Pesan Obat</h5>
 						</div>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-							<li class="breadcrumb-item" aria-current="page">Home</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -24,7 +20,6 @@
 			<!-- [ sample-page ] start -->
 
 			<div class="col-md-12 col-xl-12">
-				<h5 class="mb-3">Recent Orders</h5>
 				<!-- Button trigger modal -->
 				<a href="<?= base_url('Backend/cPemesananObat/pesan') ?>" class="btn btn-primary mb-3">Pesan Obat</a>
 				<?php
@@ -37,7 +32,7 @@
 				}
 				?>
 				<div class="row">
-					<div class="col-lg-5">
+					<div class="col-lg-4">
 						<div class="card tbl-card">
 							<div class="card-body">
 								<form action="<?= base_url('Backend/cPemesananObat/addtocart') ?>" method="POST">
@@ -69,7 +64,7 @@
 
 						</div>
 					</div>
-					<div class="col-lg-7">
+					<div class="col-lg-8">
 						<div class="card tbl-card">
 							<div class="card-body">
 								<table class="table" id="myTable">
@@ -80,6 +75,7 @@
 											<th>Harga</th>
 											<th>Quantity</th>
 											<th>Subtotal</th>
+											<th></th>
 										</tr>
 
 									</thead>
@@ -94,6 +90,7 @@
 												<td>Rp. <?= number_format($value['price']) ?></td>
 												<td><?= $value['qty'] ?>x</td>
 												<td>Rp. <?= number_format($value['qty'] * $value['price'])  ?></td>
+												<td><a href="<?= base_url('Backend/cPemesananObat/delete/' . $value['rowid']) ?>">Hapus</a></td>
 											</tr>
 										<?php
 										}

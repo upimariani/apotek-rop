@@ -7,13 +7,9 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="page-header-title">
-							<h5 class="m-b-10">Home</h5>
+							<h5 class="m-b-10">Informasi Pemesanan Obat</h5>
 						</div>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-							<li class="breadcrumb-item" aria-current="page">Home</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -24,7 +20,6 @@
 			<!-- [ sample-page ] start -->
 
 			<div class="col-md-12 col-xl-12">
-				<h5 class="mb-3">Recent Orders</h5>
 				<!-- Button trigger modal -->
 				<a href="<?= base_url('Backend/cPemesananObat/pesan') ?>" class="btn btn-primary mb-3">Pesan Obat</a>
 				<?php
@@ -100,6 +95,14 @@
 									</h2>
 									<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 										<div class="accordion-body">
+											<?php
+											if ($this->session->userdata('id_user') == '3') {
+											?>
+												<a href="<?= base_url('Backend/cLaporan') ?>" class="btn btn-success">Cetak Laporan</a>
+											<?php
+											}
+											?>
+
 											<table class="tabel table table-hover table-borderless mb-0">
 												<thead>
 													<tr>

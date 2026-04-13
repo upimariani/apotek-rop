@@ -40,9 +40,9 @@ if ($this->session->userdata('error')) {
 							foreach ($this->cart->contents() as $key => $value) {
 							?>
 								<tr>
-									<th>
+									<td>
 										<?= $value['name'] ?> <small>Stok. <?= $value['stok'] ?></small>
-									</th>
+									</td>
 									<td>
 										Rp. <?= number_format($value['price']) ?>
 									</td>

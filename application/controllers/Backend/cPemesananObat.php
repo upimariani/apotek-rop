@@ -36,11 +36,17 @@ class cPemesananObat extends CI_Controller
 		$data = array(
 			'id' => $id_obat,
 			'name' => $query->nama_obat,
-			'price' => $query->harga,
+			'price' => $query->harga_perbox,
 			'qty' => $this->input->post('qty')
 		);
 		$this->cart->insert($data);
 		$this->session->set_flashdata('success', 'Obat berhasil masuk ke keranjang!');
+		redirect('Backend/cPemesananObat/pesan');
+	}
+	public function delete($rowid)
+	{
+		$this->cart->remove($rowid);
+		$this->session->set_flashdata('success', 'Produk berhasil dihapus!');
 		redirect('Backend/cPemesananObat/pesan');
 	}
 	public function order()

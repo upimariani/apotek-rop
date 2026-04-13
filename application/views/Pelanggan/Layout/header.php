@@ -37,7 +37,8 @@
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-12">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<a class="navbar-brand" href="index.html"> <img src="<?= base_url('asset/pillowmart-master/') ?>img/logo.png" alt="logo"> </a>
+						<!-- <a class="navbar-brand" href="index.html"> <img src="<?= base_url('asset/pillowmart-master/') ?>img/logo.png" alt="logo"> </a> -->
+						<a class="navbar-brand">Anugrah Farma</a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="menu_icon"><i class="fas fa-bars"></i></span>
 						</button>
@@ -77,22 +78,29 @@
 								</li>
 							</ul>
 						</div>
-						<div class="hearer_icon d-flex align-items-center">
-							<?php
-							$qty = 0;
-							foreach ($this->cart->contents() as $key => $value) {
-								$qty += $value['qty'];
-							}
-							if ($qty != '0') {
-							?>
-								<a href="<?= base_url('Pelanggan/cCart') ?>">
-									<span class="text-muted">Rp. <?= number_format($this->cart->total()) ?></span><i class="flaticon-shopping-cart-black-shape"></i><span class="badge badge-success"><?= $qty ?></span>
-								</a>
-							<?php
-							}
-							?>
+						<?php
+						if ($this->session->userdata('id_pelanggan')) {
+						?>
+							<div class="hearer_icon d-flex align-items-center">
+								<?php
+								$qty = 0;
+								foreach ($this->cart->contents() as $key => $value) {
+									$qty += $value['qty'];
+								}
+								if ($qty != '0') {
+								?>
+									<a href="<?= base_url('Pelanggan/cCart') ?>">
+										<span class="text-muted">Rp. <?= number_format($this->cart->total()) ?></span><i class="flaticon-shopping-cart-black-shape"></i><span class="badge badge-success"><?= $qty ?></span>
+									</a>
+								<?php
+								}
+								?>
 
-						</div>
+							</div>
+						<?php
+						}
+						?>
+
 					</nav>
 				</div>
 			</div>

@@ -7,13 +7,9 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="page-header-title">
-							<h5 class="m-b-10">Home</h5>
+							<h5 class="m-b-10">Dashboard</h5>
 						</div>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-							<li class="breadcrumb-item" aria-current="page">Home</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -79,14 +75,31 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td><a href="#" class="text-muted">84564564</a></td>
-										<td>Camera Lens</td>
-										<td>40</td>
-										<td><span class="d-flex align-items-center gap-2"><i class="fas fa-circle text-danger f-10 m-r-5"></i>Rejected</span>
-										</td>
-										<td class="text-end">$40,570</td>
-									</tr>
+
+									<?php
+									$no = 1;
+									foreach ($dt_obat as $key => $value) {
+									?>
+										<tr>
+											<td><?= $no++ ?></td>
+											<td><?= $value->nama_obat ?></td>
+											<td><?= number_format($value->stok) ?></td>
+											<td><?= number_format($value->rop) ?></td>
+											<td>
+												<?php
+												if ($value->stok <= $value->rop) {
+													echo '<span class="d-flex align-items-center gap-2"><i class="fas fa-circle text-danger f-10 m-r-5"></i>Segera Pesan!</span>';
+												} else {
+													echo '<span class="d-flex align-items-center gap-2"><i class="fas fa-circle text-success f-10 m-r-5"></i>Stok Aman</span>';
+												}
+												?>
+											</td>
+										</tr>
+									<?php
+									}
+									?>
+
+
 
 								</tbody>
 							</table>

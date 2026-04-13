@@ -203,7 +203,7 @@ class Ongkir extends CI_Controller
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => "origin=" . $id_kota_asal . "&destination=114&weight=" . $berat . "&courier=" . $expedisi . "&price=lowest",
+			CURLOPT_POSTFIELDS => "origin=" . $id_kota_asal . "&destination=1224&weight=" . $berat . "&courier=" . $expedisi . "&price=lowest",
 			CURLOPT_HTTPHEADER => array(
 				"content-type: application/x-www-form-urlencoded",
 				"key: $this->api_key"

@@ -40,7 +40,9 @@ class cObat extends CI_Controller
 				'nama_obat' => $this->input->post('nama'),
 				'keterangan' => $this->input->post('keterangan'),
 				'harga' => $this->input->post('harga'),
+				'harga_perbox' => $this->input->post('harga_paket'),
 				'stok' => $this->input->post('stok'),
+				'stat_supplier' => $this->input->post('stok_paket'),
 				'lead_time' => $this->input->post('lead_time'),
 				'gambar' => $upload_data['file_name'],
 			);
@@ -72,7 +74,9 @@ class cObat extends CI_Controller
 				'nama_obat' => $this->input->post('nama'),
 				'keterangan' => $this->input->post('keterangan'),
 				'harga' => $this->input->post('harga'),
+				'harga_perbox' => $this->input->post('harga_paket'),
 				'stok' => $this->input->post('stok'),
+				'stat_supplier' => $this->input->post('stok_paket'),
 				'lead_time' => $this->input->post('lead_time'),
 				'gambar' => $upload_data['file_name'],
 			);
@@ -86,7 +90,9 @@ class cObat extends CI_Controller
 			'nama_obat' => $this->input->post('nama'),
 			'keterangan' => $this->input->post('keterangan'),
 			'harga' => $this->input->post('harga'),
+			'harga_perbox' => $this->input->post('harga_paket'),
 			'stok' => $this->input->post('stok'),
+			'stat_supplier' => $this->input->post('stok_paket'),
 			'lead_time' => $this->input->post('lead_time')
 		);
 		$this->mObat->update($id, $data);

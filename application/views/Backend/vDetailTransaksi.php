@@ -7,13 +7,9 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="page-header-title">
-							<h5 class="m-b-10">Home</h5>
+							<h5 class="m-b-10">Detail Transaksi Pelanggan</h5>
 						</div>
-						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-							<li class="breadcrumb-item" aria-current="page">Home</li>
-						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -24,7 +20,7 @@
 			<!-- [ sample-page ] start -->
 
 			<div class="col-md-12 col-xl-12">
-				<h5 class="mb-3">Recent Orders</h5>
+				<h5 class="mb-3">Informasi</h5>
 				<!-- Button trigger modal -->
 
 				<div class="card tbl-card">
