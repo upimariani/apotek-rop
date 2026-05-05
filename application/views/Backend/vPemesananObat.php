@@ -21,7 +21,8 @@
 
 			<div class="col-md-12 col-xl-12">
 				<!-- Button trigger modal -->
-				<a href="<?= base_url('Backend/cPemesananObat/pesan') ?>" class="btn btn-primary mb-3">Pesan Obat</a>
+
+
 				<?php
 				if ($this->session->userdata('success')) {
 				?>
@@ -47,6 +48,7 @@
 												<thead>
 													<tr>
 														<th>No</th>
+														<th>Nama Supplier</th>
 														<th>Tanggal Masuk</th>
 														<th>Total Pemesanan</th>
 														<th>Status</th>
@@ -57,11 +59,18 @@
 													<?php
 													$no = 1;
 													foreach ($pemesanan as $key => $value) {
-														if ($value->status_masuk != '2') {
-
+														if (
+															$value->status_masuk != 2 &&
+															($this->session->userdata('id_user') == 1 ||
+																($this->session->userdata('id_user') == 2 &&
+																	$value->id_supplier == $this->session->userdata('id_supplier')
+																)
+															)
+														) {
 													?>
 															<tr>
 																<td><?= $no++ ?></td>
+																<td><?= $value->nama_supplier ?></td>
 																<td><?= $value->tgl_masuk ?></td>
 																<td>Rp. <?= number_format($value->total_transaksi)  ?></td>
 																<td>
@@ -79,6 +88,7 @@
 													<?php
 														}
 													}
+
 													?>
 
 
@@ -107,6 +117,7 @@
 												<thead>
 													<tr>
 														<th>No</th>
+														<th>Nama Supplier</th>
 														<th>Tanggal Masuk</th>
 														<th>Total Pemesanan</th>
 														<th>Status</th>
@@ -117,11 +128,18 @@
 													<?php
 													$no = 1;
 													foreach ($pemesanan as $key => $value) {
-														if ($value->status_masuk == '2') {
-
+														if (
+															$value->status_masuk == 2 &&
+															($this->session->userdata('id_user') == 1 ||
+																($this->session->userdata('id_user') == 2 &&
+																	$value->id_supplier == $this->session->userdata('id_supplier')
+																)
+															)
+														) {
 													?>
 															<tr>
 																<td><?= $no++ ?></td>
+																<td><?= $value->nama_supplier ?></td>
 																<td><?= $value->tgl_masuk ?></td>
 																<td>Rp. <?= number_format($value->total_transaksi)  ?></td>
 																<td>

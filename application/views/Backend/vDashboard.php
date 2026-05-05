@@ -61,6 +61,29 @@
 			</div>
 			<div class="col-md-12 col-xl-8">
 				<h5 class="mb-3">Informasi Reorder Point</h5>
+				<?php
+				//menampilkan informasi notif
+				$notif = $this->db->query("SELECT * FROM `obat` WHERE stok <= rop")->result();
+				foreach ($notif as $key => $value) {
+					if ($this->session->userdata('id_user') != '2') {
+
+
+				?>
+						<div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between align-items-center" role="alert">
+
+							<div>
+								<strong>Segera Pesan!</strong> <?= $value->nama_obat ?>
+							</div>
+
+							<a href="<?= base_url('Backend/cPemesananObat/pesan/' . $value->id_obat) ?>" class="btn btn-sm btn-danger">
+								Pesan
+							</a>
+
+						</div>
+				<?php
+					}
+				}
+				?>
 				<div class="card tbl-card">
 					<div class="card-body">
 						<div class="table-responsive">

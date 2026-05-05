@@ -18,7 +18,7 @@
 							<p>Nomor Telepon</p><span>: <?= $pesanan_saya->no_hp ?></span>
 						</li>
 						<li>
-							<p>Alamat Pengiriman</p><span>: <?= $pesanan_saya->pengiriman ?></span>
+							<p>Alamat Pengiriman</p><span>: <?= $pesanan_saya->alamat_detail ?> <?= $pesanan_saya->alamat_pengiriman ?> <?= $pesanan_saya->pengiriman ?></span>
 						</li>
 						<li>
 							<p>Status</p><span>: <?php if ($pesanan_saya->status == '0') {
@@ -79,7 +79,7 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<th scope="col" colspan="4">Quantity</th>
+								<th scope="col" colspan="4"></th>
 								<th scope="col">Total Rp. <?= number_format($pesanan_saya->total_keluar) ?></th>
 							</tr>
 						</tfoot>

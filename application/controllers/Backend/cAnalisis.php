@@ -14,7 +14,7 @@ class cAnalisis extends CI_Controller
 			echo $value->jml . '<br>';
 			//variabel
 			$jml_perbulan = $value->jml;
-			$jml_perhari = $value->jml / 30;
+			$jml_perhari = $jml_perbulan / 30;
 			$lead_time = $value->lead_time;
 			$z = 1.65;
 			$safety_stok = $z * $jml_perhari * $lead_time;

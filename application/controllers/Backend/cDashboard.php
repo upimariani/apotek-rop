@@ -13,7 +13,7 @@ class cDashboard extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'dt_obat' => $this->mObat->select()
+			'dt_obat' => $this->db->query("SELECT * FROM `obat`")->result()
 		);
 		$this->load->view('Backend/Layout/header');
 		$this->load->view('Backend/vDashboard', $data);

@@ -34,7 +34,7 @@
 									<img src="<?= base_url('asset/gambar/' . $value->gambar) ?>" alt="#" class="img-fluid">
 									<h3> <a href="single-product.html"><?= $value->nama_obat ?></a> </h3>
 									<p>Rp. <?= number_format($value->harga) ?></p>
-									<a href="<?= base_url('Pelanggan/cCart/add_cart/' . $value->id_obat) ?>" class="btn_3">+ Add To Cart</a>
+									<a href="<?= base_url('Pelanggan/cProduk/detail_produk/' . $value->id_obat) ?>" class="btn_3">Detail Produk</a>
 								</div>
 							</div>
 						<?php

@@ -75,10 +75,14 @@
 
 														<?php
 														if ($value->status_masuk == '0') {
+															if ($this->session->userdata('id_user') == '2') {
+
 														?><input type="date" name="dt<?= $dt++ ?>" class="form-control" required><span class="text-muted text-sm">Masukkan Tanggal Kedaluarsa Obat</span>
-														<?php
-														} else {
-														?>
+															<?php
+															}
+														} else  if ($value->status_masuk != '0') {
+
+															?>
 															<br>
 															<span class="text-muted">Tanggal Kedaluarsa Obat: <?= $value->tgl_kedaluarsa ?> </span>
 														<?php
@@ -88,10 +92,10 @@
 													</p>
 												</div>
 												<div class="col-xl-2">
-													<p>Rp. <?= number_format($value->harga) ?></p>
+													<p>Rp. <?= number_format($value->harga_perbox) ?></p>
 												</div>
 												<div class="col-xl-2">
-													<p><?= $value->jumlah_masuk ?>x / <?= $value->keterangan ?></p>
+													<p><?= $value->jumlah_masuk ?>x / box</p>
 												</div>
 												<div class="col-xl-2">
 													<p class="float-end">Rp. <?= number_format($value->harga * $value->jumlah_masuk) ?>
@@ -114,7 +118,7 @@
 										?><a href="<?= base_url('Backend/cPemesananObat/konfirmasi/' . $value->id_obat_masuk) ?>" class="btn btn-warning">Konfirmasi Pemesanan</a>
 										<?php
 										}
-										if ($transaksi->status_masuk == '0') {
+										if ($transaksi->status_masuk == '0' && $this->session->userdata('id_user') == '2') {
 										?>
 											<button type="submit" class="btn btn-success">Simpan Kedaluarsa</button>
 										<?php

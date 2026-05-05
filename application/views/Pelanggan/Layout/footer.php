@@ -97,29 +97,35 @@
 			});
 		});
 
-		$("select[name=kecamatan]").on("change", function() {
-			$.ajax({
-				type: "POST",
-				url: "http://localhost/apotek-rop/Pelanggan/ongkir/expedisi",
-				success: function(hasil_expedisi) {
-					$("select[name=expedisi]").html(hasil_expedisi);
-				}
-			});
-		});
 
+
+
+
+	});
+</script>
+<script>
+	$(document).ready(function() {
+
+		$.ajax({
+			type: "POST",
+			url: "http://localhost/apotek-rop/Pelanggan/ongkir/expedisi",
+			success: function(hasil_expedisi) {
+				$("select[name=expedisi]").html(hasil_expedisi);
+			}
+		});
 
 		$("select[name=expedisi]").on("change", function() {
 			//mendapatkan expedisi terpilih
 			var expedisi_terpilih = $("select[name=expedisi]").val()
 
 			//mendapatkan id kota tujuan terpilih
-			var id_kecamatan_tujuan_terpilih = $("option:selected", "select[name=kecamatan]").attr('id_kecamatan');
+			var id_kecamatan_tujuan_terpilih = $("option:selected", "select[name=kecamatan]").attr('id_kota');
 
 			//alert(total_berat);
 			$.ajax({
 				type: "POST",
 				url: "http://localhost/apotek-rop/Pelanggan/ongkir/paket",
-				data: 'expedisi=' + expedisi_terpilih + '&id_kecamatan=' + id_kecamatan_tujuan_terpilih + '&berat=1',
+				data: 'expedisi=' + expedisi_terpilih + '&berat=1',
 				success: function(hasil_paket) {
 					console.log(hasil_paket);
 					$("select[name=paket]").html(hasil_paket);
@@ -155,9 +161,9 @@
 			$("input[name=total_pembayaran]").val(total_bayar);
 
 		});
-
 	});
 </script>
+
 <script>
 	console.log = function() {}
 	$("#paket").on('change', function() {

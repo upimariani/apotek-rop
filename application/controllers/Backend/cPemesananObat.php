@@ -13,24 +13,25 @@ class cPemesananObat extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'pemesanan' => $this->db->query("SELECT * FROM `obat_masuk`")->result()
+			'pemesanan' => $this->db->query("SELECT * FROM `obat_masuk` JOIN supplier ON obat_masuk.id_supplier=supplier.id_supplier")->result()
 		);
 		$this->load->view('Backend/Layout/header');
 		$this->load->view('Backend/vPemesananObat', $data);
 		$this->load->view('Backend/Layout/footer');
 	}
-	public function pesan()
+	public function pesan($id_obat)
 	{
 		$data = array(
-			'obat' => $this->mObat->select()
+			'dt_obat' => $this->db->query("SELECT * FROM `obat`")->result(),
+			'obat' => $this->db->query("SELECT * FROM `obat` WHERE id_obat='" . $id_obat . "'")->row()
 		);
 		$this->load->view('Backend/Layout/header');
 		$this->load->view('Backend/vPesanObat', $data);
 		$this->load->view('Backend/Layout/footer');
 	}
-	public function addtocart()
+	public function addtocart($id_obat)
 	{
-		$id_obat = $this->input->post('obat');
+		// $id_obat = $this->input->post('obat');
 		$query = $this->db->query("SELECT * FROM `obat` WHERE id_obat='" . $id_obat . "'")->row();
 
 		$data = array(
@@ -41,7 +42,7 @@ class cPemesananObat extends CI_Controller
 		);
 		$this->cart->insert($data);
 		$this->session->set_flashdata('success', 'Obat berhasil masuk ke keranjang!');
-		redirect('Backend/cPemesananObat/pesan');
+		redirect('Backend/cPemesananObat/pesan/' . $id_obat);
 	}
 	public function delete($rowid)
 	{
@@ -49,9 +50,10 @@ class cPemesananObat extends CI_Controller
 		$this->session->set_flashdata('success', 'Produk berhasil dihapus!');
 		redirect('Backend/cPemesananObat/pesan');
 	}
-	public function order()
+	public function order($id_supplier)
 	{
 		$data = array(
+			'id_supplier' => $id_supplier,
 			'tgl_masuk' => date('Y-m-d'),
 			'total_transaksi' => $this->cart->total()
 		);
@@ -107,6 +109,19 @@ class cPemesananObat extends CI_Controller
 		$data_masuk = array('status_masuk' => '2');
 		$this->db->where('id_obat_masuk', $id_obat_masuk);
 		$this->db->update('obat_masuk', $data_masuk);
+
+		//update stok obat
+		$data_masuk = $this->db->query("SELECT *, obat.id_obat FROM `obat_masuk` JOIN detail_masuk ON obat_masuk.id_obat_masuk=detail_masuk.id_obat_masuk JOIN obat ON obat.id_obat=detail_masuk.id_obat WHERE obat_masuk.id_obat_masuk='" . $id_obat_masuk . "'")->result();
+		foreach ($data_masuk as $key => $value) {
+			$qty = $value->jumlah_masuk * $value->sat_supplier;
+
+			$dt_obat = $this->db->query("SELECT * FROM `obat` WHERE id_obat='" . $value->id_obat . "'")->row();
+			$data = array('stok' => $dt_obat->stok + $qty);
+			$this->db->where('id_obat', $dt_obat->id_obat);
+			$this->db->update('obat', $data);
+		}
+
+
 
 		$this->session->set_flashdata('success', 'Pemesanan Obat berhasil dikonfirmasi!');
 		redirect('Backend/cPemesananObat/detail/' . $id_obat_masuk);

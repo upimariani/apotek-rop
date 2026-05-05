@@ -65,9 +65,9 @@
 									<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
 								</div>
 								<div class="mb-3">
-									<label for="exampleInputPassword1" class="form-label">Stok per Paket</label>
+									<label for="exampleInputPassword1" class="form-label">Isi per Paket</label>
 									<input type="number" name="stok_paket" class="form-control" id="exampleInputPassword1" required>
-									<div id="emailHelp" class="form-text">Masukkan Stok Paket Obat (ex: 1)</div>
+									<div id="emailHelp" class="form-text">Masukkan Isi Paket Obat (ex: 1)</div>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Stok per Satuan</label>
@@ -104,7 +104,7 @@
 										<th>Produk</th>
 										<th>Harga Satuan</th>
 										<th>Harga Paket</th>
-										<th>Paket Obat</th>
+										<th>Isi Paket Obat</th>
 										<th>Satuan</th>
 										<th>Lead Time</th>
 										<th class="text-end">Action</th>
@@ -183,9 +183,9 @@ foreach ($obat as $key => $value) {
 						<div id="emailHelp" class="form-text">Masukkan Harga Obat (ex: 10000)</div>
 					</div>
 					<div class="mb-3">
-						<label for="exampleInputPassword1" class="form-label">Stok per Paket</label>
+						<label for="exampleInputPassword1" class="form-label">Isi per Paket</label>
 						<input type="number" name="stok_paket" class="form-control" value="<?= $value->sat_supplier ?>" id="exampleInputPassword1" required>
-						<div id="emailHelp" class="form-text">Masukkan Stok Paket Obat (ex: 1)</div>
+						<div id="emailHelp" class="form-text">Masukkan Isi Paket Obat (ex: 1)</div>
 					</div>
 					<div class="mb-3">
 						<label for="exampleInputPassword1" class="form-label">Stok per Satuan</label>

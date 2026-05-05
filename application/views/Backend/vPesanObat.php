@@ -21,7 +21,6 @@
 
 			<div class="col-md-12 col-xl-12">
 				<!-- Button trigger modal -->
-				<a href="<?= base_url('Backend/cPemesananObat/pesan') ?>" class="btn btn-primary mb-3">Pesan Obat</a>
 				<?php
 				if ($this->session->userdata('success')) {
 				?>
@@ -35,15 +34,17 @@
 					<div class="col-lg-4">
 						<div class="card tbl-card">
 							<div class="card-body">
-								<form action="<?= base_url('Backend/cPemesananObat/addtocart') ?>" method="POST">
+								<form action="<?= base_url('Backend/cPemesananObat/addtocart/' . $obat->id_obat) ?>" method="POST">
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Nama Obat</label>
-										<select class="form-control" name="obat">
+										<select class="form-control" name="obat" disabled>
 											<option value="">---Pilih Obat---</option>
 											<?php
-											foreach ($obat as $key => $value) {
+											foreach ($dt_obat as $key => $value) {
 											?>
-												<option value="<?= $value->id_obat ?>"><?= $value->nama_obat ?></option>
+												<option value="<?= $value->id_obat ?>" <?php if ($value->id_obat == $obat->id_obat) {
+																							echo 'selected';
+																						} ?>><?= $value->nama_obat ?></option>
 											<?php
 											}
 											?>
@@ -104,7 +105,7 @@
 										</tr>
 										<tr>
 											<td></td>
-											<td><a href="<?= base_url('Backend/cPemesananObat/order') ?>" class="btn btn-success">Order Supplier</a></td>
+											<td><a href="<?= base_url('Backend/cPemesananObat/order/' . $obat->id_supplier) ?>" class="btn btn-success">Order Supplier</a></td>
 										</tr>
 
 									</tfoot>

@@ -16,7 +16,7 @@ class cCheckout extends CI_Controller
 			'id_pelanggan' => $this->session->userdata('id_pelanggan'),
 			'tgl_keluar' => date('Y-m-d'),
 			'total_keluar' => $this->input->post('total_pembayaran'),
-			'pengiriman' => $this->input->post('alamat') . ' Kec.' . $this->input->post('kecamatan') . ' Kota/Kab.' . $this->input->post('kota') . ' Prov.' . $this->input->post('provinsi') . ' Expedisi.' . $this->input->post('expedisi') . ' ' . $this->input->post('paket'),
+			'pengiriman' => ' Expedisi.' . $this->input->post('expedisi') . ' ' . $this->input->post('paket'),
 			'status' => '0'
 		);
 		$this->db->insert('obat_keluar', $data);

@@ -11,6 +11,7 @@ class mObat extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('obat');
+		$this->db->where('id_supplier', $this->session->userdata('id_supplier'));
 		return $this->db->get()->result();
 	}
 	public function update($id, $data)
@@ -22,6 +23,13 @@ class mObat extends CI_Model
 	{
 		$this->db->where('id_obat', $id);
 		$this->db->delete('obat');
+	}
+	public function detail($id_obat)
+	{
+		$this->db->select('*');
+		$this->db->from('obat');
+		$this->db->where('id_obat', $id_obat);
+		return $this->db->get()->row();
 	}
 }
 

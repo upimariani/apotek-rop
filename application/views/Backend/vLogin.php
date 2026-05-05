@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-	<title>Login | Mantis Bootstrap 5 Admin Template</title>
+	<title>LOGIN USER</title>
 	<!-- [Meta] -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -74,7 +74,7 @@
 							?>
 							<div class="form-group mb-3">
 								<label class="form-label">Username</label>
-								<input type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
+								<input type="text" class="form-control" name="username" placeholder="Masukkan Username" required autofocus>
 							</div>
 							<div class="form-group mb-3">
 								<label class="form-label">Password</label>

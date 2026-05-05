@@ -28,6 +28,18 @@
 	<link rel="stylesheet" href="<?= base_url('asset/pillowmart-master/') ?>css/slick.css">
 	<!-- style CSS -->
 	<link rel="stylesheet" href="<?= base_url('asset/pillowmart-master/') ?>css/style.css">
+	<style>
+		.product_img_slide .single_product_img {
+			text-align: center;
+		}
+
+		.product_img_slide .single_product_img img {
+			width: 300px;
+			height: 300px;
+			object-fit: contain;
+			display: inline-block;
+		}
+	</style>
 </head>
 
 <body>
@@ -57,6 +69,9 @@
 
 									<li class="nav-item">
 										<a class="nav-link" href="<?= base_url('Pelanggan/cPesananSaya') ?>">Pesanan Saya</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="<?= base_url('Pelanggan/cProfile') ?>">Profile</a>
 									</li>
 								<?php
 								}

@@ -24,6 +24,24 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
+								<label>Alamat <span class="text-danger">*</span></label>
+								<input class="form-control" name="alamat" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan Alamat Lengkap Anda'" placeholder='Masukkan Alamat Anda'>
+								<?= form_error('alamat', '<span class="text-sm text-danger">', '</span>') ?>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Jenis Kelamin <span class="text-danger">*</span></label>
+								<select class="form-control" name="jk">
+									<option value="">--Pilih Jenis Kelamin--</option>
+									<option value="Perempuan">Perempuan</option>
+									<option value="Laki-Laki">Laki-Laki</option>
+								</select>
+								<?= form_error('jk', '<span class="text-sm text-danger">', '</span>') ?>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
 								<label>Username <span class="text-danger">*</span></label>
 								<input class="form-control" name="username" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan Username Anda'" placeholder='Masukkan Username Anda'>
 								<?= form_error('username', '<span class="text-sm text-danger">', '</span>') ?>

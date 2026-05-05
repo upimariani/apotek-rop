@@ -77,7 +77,24 @@
 					<?php
 					}
 					?>
-
+					<?php
+					if ($this->session->userdata('id_user') == '1') {
+					?>
+						<li class="pc-item pc-caption">
+							<label>Kelola Data</label>
+							<i class="ti ti-dashboard"></i>
+						</li>
+						<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cSupplier') {
+												echo 'active';
+											}  ?>">
+							<a href="<?= base_url('Backend/cSupplier') ?>" class="pc-link">
+								<span class="pc-micon"><i class="ti ti-user"></i></span>
+								<span class="pc-mtext">Supplier</span>
+							</a>
+						</li>
+					<?php
+					}
+					?>
 
 
 					<li class="pc-item pc-caption">

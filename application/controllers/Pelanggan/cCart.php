@@ -17,7 +17,7 @@ class cCart extends CI_Controller
 			'id' => $obat->id_obat,
 			'name' => $obat->nama_obat,
 			'price' => $obat->harga,
-			'qty' => '1',
+			'qty' => $this->input->post('qty'),
 			'stok' => $obat->stok
 		);
 		// var_dump($data);

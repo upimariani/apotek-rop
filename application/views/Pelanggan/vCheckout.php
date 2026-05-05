@@ -1,30 +1,13 @@
 <!--================Checkout Area =================-->
-<section class="checkout_area">
+<section class="checkout_area mb-5">
 	<div class="container">
 
 		<div class="billing_details mt-5">
 			<div class="row">
 				<div class="col-lg-8">
-					<h3>Alamat Pengiriman</h3>
+					<h3>Pilih Jasa Pengiriman</h3>
 					<form action="<?= base_url('Pelanggan/cCheckout/order') ?>" method="POST">
-						<div class="col-md-12 form-group p_star">
-							<label class="form-label">Provinsi<sup class="text-danger">*</sup></label>
-							<select name="provinsi" class="form-control" required>
 
-							</select>
-						</div>
-						<div class="col-md-12 form-group p_star">
-							<label class="form-label">Kota/Kabupaten<sup class="text-danger">*</sup></label>
-							<select name="kota" class="form-control" required>
-
-							</select>
-						</div>
-						<div class="col-md-12 form-group p_star">
-							<label class="form-label">Kecamatan<sup class="text-danger">*</sup></label>
-							<select name="kecamatan" class="form-control" required>
-
-							</select>
-						</div>
 						<div class="col-md-12 form-group p_star">
 							<label class="form-label">Expedisi<sup class="text-danger">*</sup></label>
 							<select name="expedisi" class="form-control" required>
@@ -39,12 +22,6 @@
 						</div>
 
 
-						<div class="col-md-12 form-group">
-							<div class="creat_account">
-								<h3>Alamat Lengkap</h3>
-							</div>
-							<textarea class="form-control" name="alamat" id="message" rows="1" placeholder="Masukkan Alamat Lengkap"></textarea>
-						</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="order_box">

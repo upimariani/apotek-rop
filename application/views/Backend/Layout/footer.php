@@ -6,7 +6,7 @@
 			</div>
 			<div class="col-auto my-1">
 				<ul class="list-inline footer-link mb-0">
-					<li class="list-inline-item"><a href="../index.html">Analisis Stok Obat - Reorder Point</a></li>
+					<li class="list-inline-item">Analisis Stok Obat - Reorder Point</li>
 				</ul>
 			</div>
 		</div>

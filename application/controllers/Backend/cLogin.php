@@ -20,13 +20,6 @@ class cLogin extends CI_Controller
 			);
 			$this->session->set_userdata($array);
 			redirect('Backend/cDashboard');
-		} else if ($username == 'supplier' && $password == 'supplier') {
-			$id_user = 2;
-			$array = array(
-				'id_user' => $id_user
-			);
-			$this->session->set_userdata($array);
-			redirect('Backend/cDashboard');
 		} else if ($username == 'pemilik' && $password == 'pemilik') {
 			$id_user = 3;
 			$array = array(
@@ -35,13 +28,25 @@ class cLogin extends CI_Controller
 			$this->session->set_userdata($array);
 			redirect('Backend/cDashboard');
 		} else {
-			$this->session->set_flashdata('error', 'Username dan Password Anda Salah!');
-			redirect('Backend/cLogin');
+			$query = $this->db->query("SELECT * FROM `supplier` WHERE username='" . $username . "' AND password='" . $password . "'")->row();
+			if ($query) {
+				$id_user = 2;
+				$array = array(
+					'id_user' => $id_user,
+					'id_supplier' => $query->id_supplier
+				);
+				$this->session->set_userdata($array);
+				redirect('Backend/cDashboard');
+			} else {
+				$this->session->set_flashdata('error', 'Username dan Password Anda Salah!');
+				redirect('Backend/cLogin');
+			}
 		}
 	}
 	public function logout()
 	{
 		$this->session->unset_userdata('id_user');
+		$this->session->unset_userdata('id_supplier');
 		$this->session->set_flashdata('success', 'Anda Berhasil Logout!');
 		redirect('Backend/cLogin');
 	}
