@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2026 at 05:21 PM
+-- Generation Time: May 06, 2026 at 05:44 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -255,7 +255,10 @@ INSERT INTO `detail_keluar` (`id_detail_keluar`, `id_obat_keluar`, `id_obat`, `j
 (198, 30, 6, 4),
 (199, 18, 1, 2),
 (200, 58, 5, 4),
-(201, 101, 1, 4);
+(201, 101, 1, 4),
+(202, 102, 1, 1),
+(203, 104, 2, 2),
+(204, 104, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -279,7 +282,9 @@ INSERT INTO `detail_masuk` (`id_detail_masuk`, `id_obat_masuk`, `id_obat`, `juml
 (1, 1, 2, 12, '2026-07-22'),
 (2, 2, 3, 10, '2026-09-24'),
 (3, 3, 2, 10, '2026-04-29'),
-(4, 3, 3, 10, '2026-04-30');
+(4, 3, 3, 10, '2026-04-30'),
+(5, 4, 1, 4, '2026-10-22'),
+(6, 5, 1, 10, '');
 
 -- --------------------------------------------------------
 
@@ -289,6 +294,7 @@ INSERT INTO `detail_masuk` (`id_detail_masuk`, `id_obat_masuk`, `id_obat`, `juml
 
 CREATE TABLE `obat` (
   `id_obat` int(11) NOT NULL,
+  `id_supplier` int(11) NOT NULL,
   `nama_obat` varchar(125) NOT NULL,
   `keterangan` varchar(20) NOT NULL,
   `harga` varchar(15) NOT NULL,
@@ -304,17 +310,18 @@ CREATE TABLE `obat` (
 -- Dumping data for table `obat`
 --
 
-INSERT INTO `obat` (`id_obat`, `nama_obat`, `keterangan`, `harga`, `harga_perbox`, `stok`, `sat_supplier`, `rop`, `lead_time`, `gambar`) VALUES
-(1, 'Quetiapin', 'strip', '13000', 130000, 3, 100, 8, 2, 'a.png'),
-(2, 'Nerilon', 'strip', '40000', 400000, 1000, 100, 9, 3, 'a.png'),
-(3, 'Flixotit', 'strip', '3000', 30000, 1000, 100, 7, 2, 'a.png'),
-(4, 'Depakote', 'strip', '23000', 230000, 1000, 100, 4, 1, 'a.png'),
-(5, 'Citicolin', 'strip', '19000', 190000, 1000, 100, 8, 2, 'a.png'),
-(6, 'Mecobalamin', 'strip', '15000', 150000, 1000, 100, 7, 2, 'a.png'),
-(7, 'Osteocal', 'strip', '8000', 80000, 1000, 100, 12, 3, 'a.png'),
-(8, 'Lodomer 2 mg', 'strip', '37000', 370000, 1000, 100, 5, 2, 'a.png'),
-(9, 'THD 2 mg', 'strip', '22000', 220000, 1000, 100, 3, 2, 'a.png'),
-(10, 'Stalevo', 'strip', '14000', 140000, 1000, 100, 4, 2, 'a.png');
+INSERT INTO `obat` (`id_obat`, `id_supplier`, `nama_obat`, `keterangan`, `harga`, `harga_perbox`, `stok`, `sat_supplier`, `rop`, `lead_time`, `gambar`) VALUES
+(1, 1, 'Quetiapin', 'strip', '13000', 130000, 2, 100, 3, 2, 'a.png'),
+(2, 1, 'Nerilon', 'strip', '40000', 400000, 998, 100, 6, 3, 'a.png'),
+(3, 1, 'Flixotit', 'strip', '3000', 30000, 1000, 100, 6, 2, 'a.png'),
+(4, 1, 'Depakote', 'strip', '23000', 230000, 1000, 100, 4, 1, 'a.png'),
+(5, 1, 'Citicolin', 'strip', '19000', 190000, 1000, 100, 5, 2, 'a.png'),
+(6, 1, 'Mecobalamin', 'strip', '15000', 150000, 1000, 100, 4, 2, 'a.png'),
+(7, 1, 'Osteocal', 'strip', '8000', 80000, 1000, 100, 2, 3, 'a.png'),
+(8, 1, 'Lodomer 2 mg', 'strip', '37000', 370000, 1000, 100, 4, 2, 'a.png'),
+(9, 2, 'THD 2 mg', 'strip', '22000', 220000, 1000, 100, 3, 2, 'a.png'),
+(10, 2, 'Stalevo', 'strip', '14000', 140000, 1000, 100, 4, 2, 'a.png'),
+(12, 2, 'Contoh e', 'pcs', '15000', 150000, 100, 100, 0, 3, 'a3.png');
 
 -- --------------------------------------------------------
 
@@ -423,7 +430,9 @@ INSERT INTO `obat_keluar` (`id_obat_keluar`, `id_pelanggan`, `tgl_keluar`, `tota
 (98, 19, '2026-04-07', 235000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
 (99, 11, '2026-03-09', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
 (100, 1, '2026-04-12', 126000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(101, 1, '2026-04-13', 59000, 'Lingk Kramat Jaya RT.07/03 Kec.KUNINGAN Kota/Kab.KUNINGAN Prov.JAWA BARAT Expedisi.jne CTC', 2);
+(101, 1, '2026-04-13', 52000, 'Lingk Kramat Jaya RT.07/03 Kec.KUNINGAN Kota/Kab.KUNINGAN Prov.JAWA BARAT Expedisi.jne CTC', 2),
+(102, 1, '2026-04-14', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.CIAWIGEBANG Kota/Kab.KUNINGAN Prov.JAWA BARAT Expedisi.jne CTC', 0),
+(104, 21, '2026-05-05', 93000, ' Expedisi.jne CTCYES', 2);
 
 -- --------------------------------------------------------
 
@@ -433,6 +442,7 @@ INSERT INTO `obat_keluar` (`id_obat_keluar`, `id_pelanggan`, `tgl_keluar`, `tota
 
 CREATE TABLE `obat_masuk` (
   `id_obat_masuk` int(11) NOT NULL,
+  `id_supplier` int(11) NOT NULL,
   `tgl_masuk` varchar(15) NOT NULL,
   `total_transaksi` varchar(15) NOT NULL,
   `status_masuk` int(11) NOT NULL
@@ -442,10 +452,12 @@ CREATE TABLE `obat_masuk` (
 -- Dumping data for table `obat_masuk`
 --
 
-INSERT INTO `obat_masuk` (`id_obat_masuk`, `tgl_masuk`, `total_transaksi`, `status_masuk`) VALUES
-(1, '2026-03-30', '60000', 2),
-(2, '2026-03-30', '30000', 2),
-(3, '2026-04-10', '80000', 2);
+INSERT INTO `obat_masuk` (`id_obat_masuk`, `id_supplier`, `tgl_masuk`, `total_transaksi`, `status_masuk`) VALUES
+(1, 1, '2026-03-30', '60000', 2),
+(2, 1, '2026-03-30', '30000', 2),
+(3, 1, '2026-04-10', '80000', 2),
+(4, 1, '2026-04-14', '520000', 2),
+(5, 1, '2026-05-05', '1300000', 0);
 
 -- --------------------------------------------------------
 
@@ -456,36 +468,64 @@ INSERT INTO `obat_masuk` (`id_obat_masuk`, `tgl_masuk`, `total_transaksi`, `stat
 CREATE TABLE `pelanggan` (
   `id_pelanggan` int(11) NOT NULL,
   `fullname` varchar(50) NOT NULL,
+  `jk` varchar(15) NOT NULL,
+  `alamat_detail` text NOT NULL,
+  `alamat_pengiriman` text NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `kode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id_pelanggan`, `fullname`, `no_hp`, `username`, `password`) VALUES
-(1, 'Pelanggan A', '0834200751', 'pelanggan_a', 'pelanggan_a'),
-(2, 'Pelanggan B', '085848784', 'pelanggan_b', 'pelanggan_b'),
-(3, 'Pelanggan C', '0832641150', 'pelanggan_c', 'pelanggan_c'),
-(4, 'Pelanggan D', '0835395403', 'pelanggan_d', 'pelanggan_d'),
-(5, 'Pelanggan E', '0857617351', 'pelanggan_e', 'pelanggan_e'),
-(6, 'Pelanggan F', '0858393226', 'pelanggan_f', 'pelanggan_f'),
-(7, 'Pelanggan G', '082362664', 'pelanggan_g', 'pelanggan_g'),
-(8, 'Pelanggan H', '089181765', 'pelanggan_h', 'pelanggan_h'),
-(9, 'Pelanggan I', '0887706142', 'pelanggan_i', 'pelanggan_i'),
-(10, 'Pelanggan J', '0838034367', 'pelanggan_j', 'pelanggan_j'),
-(11, 'Pelanggan K', '0883803109', 'pelanggan_k', 'pelanggan_k'),
-(12, 'Pelanggan L', '0878348658', 'pelanggan_l', 'pelanggan_l'),
-(13, 'Pelanggan M', '0852499162', 'pelanggan_m', 'pelanggan_m'),
-(14, 'Pelanggan N', '0859846757', 'pelanggan_n', 'pelanggan_n'),
-(15, 'Pelanggan O', '0859306626', 'pelanggan_o', 'pelanggan_o'),
-(16, 'Pelanggan P', '0876444276', 'pelanggan_p', 'pelanggan_p'),
-(17, 'Pelanggan Q', '0874319023', 'pelanggan_q', 'pelanggan_q'),
-(18, 'Pelanggan R', '0846327553', 'pelanggan_r', 'pelanggan_r'),
-(19, 'Pelanggan S', '0865356752', 'pelanggan_s', 'pelanggan_s'),
-(20, 'Pelanggan T', '0891685892', 'pelanggan_t', 'pelanggan_t');
+INSERT INTO `pelanggan` (`id_pelanggan`, `fullname`, `jk`, `alamat_detail`, `alamat_pengiriman`, `no_hp`, `username`, `password`, `kode`) VALUES
+(1, 'Pelanggan A', 'Perempuan', 'Jln. SIliwangi no. 35', '', '0834200751', 'pelanggan_a', 'pelanggan_a', 0),
+(2, 'Pelanggan B', '', '', '', '085848784', 'pelanggan_b', 'pelanggan_b', 0),
+(3, 'Pelanggan C', '', '', '', '0832641150', 'pelanggan_c', 'pelanggan_c', 0),
+(4, 'Pelanggan D', '', '', '', '0835395403', 'pelanggan_d', 'pelanggan_d', 0),
+(5, 'Pelanggan E', '', '', '', '0857617351', 'pelanggan_e', 'pelanggan_e', 0),
+(6, 'Pelanggan F', '', '', '', '0858393226', 'pelanggan_f', 'pelanggan_f', 0),
+(7, 'Pelanggan G', '', '', '', '082362664', 'pelanggan_g', 'pelanggan_g', 0),
+(8, 'Pelanggan H', '', '', '', '089181765', 'pelanggan_h', 'pelanggan_h', 0),
+(9, 'Pelanggan I', '', '', '', '0887706142', 'pelanggan_i', 'pelanggan_i', 0),
+(10, 'Pelanggan J', '', '', '', '0838034367', 'pelanggan_j', 'pelanggan_j', 0),
+(11, 'Pelanggan K', '', '', '', '0883803109', 'pelanggan_k', 'pelanggan_k', 0),
+(12, 'Pelanggan L', '', '', '', '0878348658', 'pelanggan_l', 'pelanggan_l', 0),
+(13, 'Pelanggan M', '', '', '', '0852499162', 'pelanggan_m', 'pelanggan_m', 0),
+(14, 'Pelanggan N', '', '', '', '0859846757', 'pelanggan_n', 'pelanggan_n', 0),
+(15, 'Pelanggan O', '', '', '', '0859306626', 'pelanggan_o', 'pelanggan_o', 0),
+(16, 'Pelanggan P', '', '', '', '0876444276', 'pelanggan_p', 'pelanggan_p', 0),
+(17, 'Pelanggan Q', '', '', '', '0874319023', 'pelanggan_q', 'pelanggan_q', 0),
+(18, 'Pelanggan R', '', '', '', '0846327553', 'pelanggan_r', 'pelanggan_r', 0),
+(19, 'Pelanggan S', '', '', '', '0865356752', 'pelanggan_s', 'pelanggan_s', 0),
+(20, 'Pelanggan T', '', '', '', '0891685892', 'pelanggan_t', 'pelanggan_t', 0),
+(21, 'Salsa', 'Laki-Laki', 'Lingk Kramat Jaya RT.07/03', 'JAWA BARAT Kota/Kab. KUNINGAN Kec. KUNINGAN', '089987656543', 'coba', 'coba', 1224);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE `supplier` (
+  `id_supplier` int(11) NOT NULL,
+  `nama_supplier` varchar(125) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_hp` varchar(15) NOT NULL,
+  `username` varchar(125) NOT NULL,
+  `password` varchar(125) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `alamat`, `no_hp`, `username`, `password`) VALUES
+(1, 'Supplier 1', 'Kuningan, Jawa Barat', '089987654543', 'supplier1', 'supplier1'),
+(2, 'Supplier 2', 'Kuningan, Jawa Barat', '089987654323', 'supplier2', 'supplier2');
 
 --
 -- Indexes for dumped tables
@@ -534,6 +574,12 @@ ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`id_supplier`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -547,37 +593,43 @@ ALTER TABLE `analisis`
 -- AUTO_INCREMENT for table `detail_keluar`
 --
 ALTER TABLE `detail_keluar`
-  MODIFY `id_detail_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id_detail_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `detail_masuk`
 --
 ALTER TABLE `detail_masuk`
-  MODIFY `id_detail_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `obat_keluar`
 --
 ALTER TABLE `obat_keluar`
-  MODIFY `id_obat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id_obat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `obat_masuk`
 --
 ALTER TABLE `obat_masuk`
-  MODIFY `id_obat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_obat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

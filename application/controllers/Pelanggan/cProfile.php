@@ -54,6 +54,7 @@ class cProfile extends CI_Controller
 				'alamat_pengiriman' => $provinsi . ' Kota/Kab. ' . $kota . ' Kec. ' . $kecamatan,
 				'kode' => $id_kecamatan
 			);
+			// var_dump($data);
 			$this->db->where('id_pelanggan', $id_pelanggan);
 			$this->db->update('pelanggan', $data);
 			$this->session->set_flashdata('success', 'Alamat pengiriman berhasil ditambahkan!');

@@ -69,7 +69,7 @@
 			type: "POST",
 			url: "http://localhost/apotek-rop/Pelanggan/Ongkir/provinsi",
 			success: function(hasil_provinsi) {
-				// console.log(hasil_provinsi);
+				console.log(hasil_provinsi);
 				$("select[name=provinsi]").html(hasil_provinsi);
 			}
 		});
@@ -92,12 +92,18 @@
 				data: 'id_kota=' + id_kota_terpilih,
 				success: function(hasil_kecamatan) {
 					// console.log(hasil_kecamatan);
+					var kec = $("option:selected", this).attr('id_kec');
+					$("input[name=id_kec]").val(kec);
 					$("select[name=kecamatan]").html(hasil_kecamatan);
 				}
 			});
 		});
 
+		$("select[name=kecamatan]").on("change", function() {
+			var kec = $("option:selected", this).attr('id_kec');
+			$("input[name=id_kec]").val(kec);
 
+		});
 
 
 

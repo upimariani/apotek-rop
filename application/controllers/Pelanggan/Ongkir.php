@@ -7,8 +7,9 @@ class Ongkir extends CI_Controller
 
 
 	// private $api_key = '3f018925eeb63642fc6a25c862a54db5';
-	// private $api_key = '7jLX9MbP213ff18674eab1e29WSBIimb';
-	private $api_key = 'hIBhDbBxbaa8bab72fbf0d715fcGIAKo';
+	private $api_key = '7jLX9MbP213ff18674eab1e29WSBIimb';
+	// private $api_key = 'hIBhDbBxbaa8bab72fbf0d715fcGIAKo';
+	// private $api_key = '968af9512a7eb9257c239daaeeb6f725';
 	public function provinsi()
 	{
 
@@ -129,7 +130,7 @@ class Ongkir extends CI_Controller
 			$data_kota = $array_response['data'];
 			echo '<option value="">--Pilih Kota--</option>';
 			foreach ($data_kota as $key => $value) {
-				echo "<option value='" . $value['name'] . "'id_kota='" . $value['id'] . "'>" . $value['name'] . "</option>";
+				echo "<option value='" . $value['name'] . "'id_kec='" . $value['id'] . "'>" . $value['name'] . "</option>";
 			}
 		}
 	}
