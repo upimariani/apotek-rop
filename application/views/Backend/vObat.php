@@ -74,10 +74,14 @@
 									<input type="number" name="stok" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Stok Awal Obat (ex: 1)</div>
 								</div>
-								<div class="mb-3">
+								<!-- <div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Lead Time <span class="text-sm text-danger">(Waktu Lama Pengiriman /hari)</span></label>
 									<input type="number" name="lead_time" class="form-control" id="exampleInputPassword1" required>
 									<div id="emailHelp" class="form-text">Masukkan Lead Time (ex: 2)</div>
+								</div> -->
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Deskripsi <span class="text-sm text-danger">*</span></label>
+									<input type="text" name="deskripsi" class="form-control" id="exampleInputPassword1" required>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Gambar<span class="text-sm text-danger">(Format: jpg, jpeg, png)</span></label>
@@ -192,10 +196,14 @@ foreach ($obat as $key => $value) {
 						<input type="number" name="stok" value="<?= $value->stok ?>" class="form-control" id="exampleInputPassword1">
 						<div id="emailHelp" class="form-text">Masukkan Stok Awal Obat (ex: 1)</div>
 					</div>
-					<div class="mb-3">
+					<!-- <div class="mb-3">
 						<label for="exampleInputPassword1" class="form-label">Lead Time <span class="text-sm text-danger">(Waktu Lama Pengiriman /hari)</span></label>
 						<input type="number" value="<?= $value->lead_time ?>" name="lead_time" class="form-control" id="exampleInputPassword1">
 						<div id="emailHelp" class="form-text">Masukkan Lead Time (ex: 2)</div>
+					</div> -->
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label">Deskripsi <span class="text-sm text-danger">*</span></label>
+						<input type="text" name="deskripsi" value="<?= $value->deskripsi ?>" class="form-control" id="exampleInputPassword1" required>
 					</div>
 					<div class="mb-3">
 						<label for="exampleInputPassword1" class="form-label">Gambar<span class="text-sm text-danger">(Format: jpg, jpeg, png)</span></label>

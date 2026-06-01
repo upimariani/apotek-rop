@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2026 at 05:44 AM
+-- Generation Time: Jun 01, 2026 at 09:18 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -36,6 +36,22 @@ CREATE TABLE `analisis` (
   `jml_perhari` int(11) NOT NULL,
   `safety_stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `analisis`
+--
+
+INSERT INTO `analisis` (`id_analisis`, `id_obat`, `hasil_rop`, `total_pemakaian`, `jml_perhari`, `safety_stok`) VALUES
+(1, 1, 0, 15, 1, 0),
+(2, 2, 6, 22, 1, 4),
+(3, 3, 6, 33, 1, 4),
+(4, 4, 4, 46, 2, 3),
+(5, 5, 5, 28, 1, 3),
+(6, 6, 4, 24, 1, 3),
+(7, 7, 2, 8, 0, 1),
+(8, 8, 4, 20, 1, 2),
+(9, 9, 1, 16, 1, 1),
+(10, 10, 4, 24, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -258,7 +274,9 @@ INSERT INTO `detail_keluar` (`id_detail_keluar`, `id_obat_keluar`, `id_obat`, `j
 (201, 101, 1, 4),
 (202, 102, 1, 1),
 (203, 104, 2, 2),
-(204, 104, 1, 1);
+(204, 104, 1, 1),
+(205, 105, 2, 4),
+(206, 106, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -279,12 +297,7 @@ CREATE TABLE `detail_masuk` (
 --
 
 INSERT INTO `detail_masuk` (`id_detail_masuk`, `id_obat_masuk`, `id_obat`, `jumlah_masuk`, `tgl_kedaluarsa`) VALUES
-(1, 1, 2, 12, '2026-07-22'),
-(2, 2, 3, 10, '2026-09-24'),
-(3, 3, 2, 10, '2026-04-29'),
-(4, 3, 3, 10, '2026-04-30'),
-(5, 4, 1, 4, '2026-10-22'),
-(6, 5, 1, 10, '');
+(1, 1, 1, 20, '2028-09-12');
 
 -- --------------------------------------------------------
 
@@ -303,25 +316,25 @@ CREATE TABLE `obat` (
   `sat_supplier` int(11) NOT NULL,
   `rop` int(11) NOT NULL,
   `lead_time` int(11) NOT NULL,
-  `gambar` text NOT NULL
+  `gambar` text NOT NULL,
+  `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `obat`
 --
 
-INSERT INTO `obat` (`id_obat`, `id_supplier`, `nama_obat`, `keterangan`, `harga`, `harga_perbox`, `stok`, `sat_supplier`, `rop`, `lead_time`, `gambar`) VALUES
-(1, 1, 'Quetiapin', 'strip', '13000', 130000, 2, 100, 3, 2, 'a.png'),
-(2, 1, 'Nerilon', 'strip', '40000', 400000, 998, 100, 6, 3, 'a.png'),
-(3, 1, 'Flixotit', 'strip', '3000', 30000, 1000, 100, 6, 2, 'a.png'),
-(4, 1, 'Depakote', 'strip', '23000', 230000, 1000, 100, 4, 1, 'a.png'),
-(5, 1, 'Citicolin', 'strip', '19000', 190000, 1000, 100, 5, 2, 'a.png'),
-(6, 1, 'Mecobalamin', 'strip', '15000', 150000, 1000, 100, 4, 2, 'a.png'),
-(7, 1, 'Osteocal', 'strip', '8000', 80000, 1000, 100, 2, 3, 'a.png'),
-(8, 1, 'Lodomer 2 mg', 'strip', '37000', 370000, 1000, 100, 4, 2, 'a.png'),
-(9, 2, 'THD 2 mg', 'strip', '22000', 220000, 1000, 100, 3, 2, 'a.png'),
-(10, 2, 'Stalevo', 'strip', '14000', 140000, 1000, 100, 4, 2, 'a.png'),
-(12, 2, 'Contoh e', 'pcs', '15000', 150000, 100, 100, 0, 3, 'a3.png');
+INSERT INTO `obat` (`id_obat`, `id_supplier`, `nama_obat`, `keterangan`, `harga`, `harga_perbox`, `stok`, `sat_supplier`, `rop`, `lead_time`, `gambar`, `deskripsi`) VALUES
+(1, 1, 'Quetiapin', 'strip', '13000', 130000, 2002, 100, 0, 0, 'a.png', 'Deskripsi Quetiapin'),
+(2, 1, 'Nerilon', 'strip', '40000', 400000, 997, 100, 6, 3, 'a.png', 'Deskripsi Nerilon'),
+(3, 1, 'Flixotit', 'strip', '3000', 30000, 1000, 100, 6, 2, 'a.png', 'Deskripsi Flixotit'),
+(4, 1, 'Depakote', 'strip', '23000', 230000, 1000, 100, 4, 1, 'a.png', 'Deskripsi Depakote'),
+(5, 1, 'Citicolin', 'strip', '19000', 190000, 1000, 100, 5, 2, 'a.png', 'Deskripsi Citicolin'),
+(6, 1, 'Mecobalamin', 'strip', '15000', 150000, 1000, 100, 4, 2, 'a.png', 'Deskripsi Mecobalamin'),
+(7, 1, 'Osteocal', 'strip', '8000', 80000, 1000, 100, 2, 3, 'a.png', 'Deskripsi Osteocal'),
+(8, 1, 'Lodomer 2 mg', 'strip', '37000', 370000, 1000, 100, 4, 2, 'a.png', 'Deskripsi Lodomer 2 mg'),
+(9, 2, 'THD 2 mg', 'strip', '22000', 220000, 2000, 100, 1, 1, 'a.png', 'Deskripsi THD 2 mg'),
+(10, 2, 'Stalevo', 'strip', '14000', 140000, 1000, 100, 4, 2, 'a.png', 'Deskripsi Stalevo');
 
 -- --------------------------------------------------------
 
@@ -343,96 +356,94 @@ CREATE TABLE `obat_keluar` (
 --
 
 INSERT INTO `obat_keluar` (`id_obat_keluar`, `id_pelanggan`, `tgl_keluar`, `total_keluar`, `pengiriman`, `status`) VALUES
-(1, 16, '2026-04-02', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(2, 12, '2026-03-29', 112000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(3, 15, '2026-03-28', 22000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(4, 4, '2026-03-30', 144000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(5, 17, '2026-04-01', 159000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(6, 20, '2026-03-05', 103000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(7, 5, '2026-03-22', 200000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(8, 13, '2026-03-25', 49000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(9, 15, '2026-04-02', 93000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(10, 20, '2026-03-07', 159000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(11, 16, '2026-03-20', 160000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(12, 17, '2026-03-09', 95000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(13, 4, '2026-04-10', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(15, 9, '2026-04-01', 210000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(16, 1, '2026-03-09', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(17, 1, '2026-03-13', 185000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(18, 15, '2026-03-21', 26000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(19, 7, '2026-04-13', 120000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(20, 13, '2026-03-05', 83000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(21, 7, '2026-04-05', 76000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(22, 13, '2026-04-05', 173000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(23, 14, '2026-04-12', 58000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(24, 17, '2026-04-06', 148000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(25, 15, '2026-03-31', 42000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(26, 16, '2026-03-04', 19000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(28, 19, '2026-04-06', 101000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(30, 11, '2026-04-01', 218000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(31, 3, '2026-03-19', 80000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(32, 17, '2026-03-15', 338000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(35, 11, '2026-03-27', 66000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(36, 19, '2026-04-13', 71000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(37, 5, '2026-03-05', 125000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(38, 10, '2026-03-06', 63000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(39, 11, '2026-03-30', 92000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(40, 11, '2026-04-01', 257000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(41, 12, '2026-03-09', 135000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(42, 10, '2026-04-07', 187000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(43, 15, '2026-03-08', 72000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(44, 14, '2026-04-13', 69000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(45, 11, '2026-03-25', 57000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(46, 14, '2026-03-22', 285000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(48, 16, '2026-03-22', 80000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(49, 3, '2026-03-29', 109000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(50, 11, '2026-03-20', 32000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(51, 8, '2026-04-05', 222000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(52, 11, '2026-03-27', 84000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(54, 9, '2026-03-27', 214000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(55, 2, '2026-04-09', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(57, 9, '2026-04-11', 124000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(58, 14, '2026-03-19', 215000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(59, 16, '2026-03-29', 128000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(60, 18, '2026-03-31', 267000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(61, 7, '2026-04-03', 284000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(62, 13, '2026-04-09', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(63, 8, '2026-03-25', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(64, 4, '2026-03-02', 133000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(65, 9, '2026-04-13', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(66, 3, '2026-03-06', 191000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(68, 4, '2026-03-16', 78000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(69, 9, '2026-04-01', 180000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(70, 16, '2026-04-05', 57000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(71, 10, '2026-04-11', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(72, 18, '2026-03-31', 160000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(73, 15, '2026-03-06', 123000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(74, 4, '2026-03-28', 83000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(75, 18, '2026-03-13', 153000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(76, 9, '2026-03-16', 234000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(77, 8, '2026-04-04', 162000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(78, 2, '2026-04-02', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(79, 19, '2026-03-05', 308000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(81, 5, '2026-04-12', 185000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(82, 4, '2026-03-28', 156000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(83, 1, '2026-03-05', 63000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(84, 19, '2026-03-04', 116000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(85, 6, '2026-04-09', 122000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(86, 5, '2026-03-26', 6000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(87, 7, '2026-03-23', 240000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(89, 1, '2026-03-16', 317000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(91, 18, '2026-04-01', 78000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(92, 11, '2026-03-02', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(93, 17, '2026-03-07', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(95, 4, '2026-04-12', 92000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(96, 1, '2026-03-17', 128000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(97, 7, '2026-04-06', 166000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(98, 19, '2026-04-07', 235000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(99, 11, '2026-03-09', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(100, 1, '2026-04-12', 126000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
-(101, 1, '2026-04-13', 52000, 'Lingk Kramat Jaya RT.07/03 Kec.KUNINGAN Kota/Kab.KUNINGAN Prov.JAWA BARAT Expedisi.jne CTC', 2),
-(102, 1, '2026-04-14', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.CIAWIGEBANG Kota/Kab.KUNINGAN Prov.JAWA BARAT Expedisi.jne CTC', 0),
-(104, 21, '2026-05-05', 93000, ' Expedisi.jne CTCYES', 2);
+(1, 16, '2026-05-02', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(2, 12, '2026-04-29', 112000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(3, 15, '2026-04-28', 22000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(4, 4, '2026-04-30', 144000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(5, 17, '2026-05-01', 159000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(6, 20, '2026-04-05', 103000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(7, 5, '2026-04-22', 200000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(8, 13, '2026-04-25', 49000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(9, 15, '2026-05-02', 93000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(10, 20, '2026-04-07', 159000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(11, 16, '2026-04-20', 160000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(12, 17, '2026-04-09', 95000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(13, 4, '2026-05-10', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(15, 9, '2026-05-01', 210000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(16, 1, '2026-04-09', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(17, 1, '2026-04-13', 185000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(18, 15, '2026-04-21', 26000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(19, 7, '2026-05-13', 120000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(20, 13, '2026-04-05', 83000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(21, 7, '2026-05-05', 76000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(22, 13, '2026-05-05', 173000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(23, 14, '2026-05-12', 58000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(24, 17, '2026-05-06', 148000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(25, 15, '2026-04-30', 42000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(26, 16, '2026-04-04', 19000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(28, 19, '2026-05-06', 101000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(30, 11, '2026-05-01', 218000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(31, 3, '2026-04-19', 80000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(32, 17, '2026-04-15', 338000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(35, 11, '2026-04-27', 66000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(36, 19, '2026-05-13', 71000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(37, 5, '2026-04-05', 125000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(38, 10, '2026-04-06', 63000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(39, 11, '2026-04-30', 92000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(40, 11, '2026-05-01', 257000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(41, 12, '2026-04-09', 135000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(42, 10, '2026-05-07', 187000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(43, 15, '2026-04-08', 72000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(44, 14, '2026-05-13', 69000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(45, 11, '2026-04-25', 57000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(46, 14, '2026-04-22', 285000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(48, 16, '2026-04-22', 80000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(49, 3, '2026-04-29', 109000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(50, 11, '2026-04-20', 32000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(51, 8, '2026-05-05', 222000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(52, 11, '2026-04-27', 84000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(54, 9, '2026-04-27', 214000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(55, 2, '2026-05-09', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(57, 9, '2026-05-11', 124000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(58, 14, '2026-04-19', 215000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(59, 16, '2026-04-29', 128000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(60, 18, '2026-04-30', 267000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(61, 7, '2026-05-03', 284000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(62, 13, '2026-05-09', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(63, 8, '2026-04-25', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(64, 4, '2026-04-02', 133000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(65, 9, '2026-05-13', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(66, 3, '2026-04-06', 191000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(68, 4, '2026-04-16', 78000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(69, 9, '2026-05-01', 180000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(70, 16, '2026-05-05', 57000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(71, 10, '2026-05-11', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(72, 18, '2026-04-30', 160000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(73, 15, '2026-04-06', 123000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(74, 4, '2026-04-28', 83000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(75, 18, '2026-04-13', 153000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(76, 9, '2026-04-16', 234000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(77, 8, '2026-05-04', 162000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(78, 2, '2026-05-02', 45000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(79, 19, '2026-04-05', 308000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(81, 5, '2026-05-12', 185000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(82, 4, '2026-04-28', 156000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(83, 1, '2026-04-05', 63000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(84, 19, '2026-04-04', 116000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(85, 6, '2026-05-09', 122000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(86, 5, '2026-04-26', 6000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(87, 7, '2026-04-23', 240000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(89, 1, '2026-04-16', 317000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(91, 18, '2026-05-01', 78000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(92, 11, '2026-04-02', 13000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(93, 17, '2026-04-07', 14000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(95, 4, '2026-05-12', 92000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(96, 1, '2026-04-17', 128000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(97, 7, '2026-05-06', 166000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(98, 19, '2026-05-07', 235000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(99, 11, '2026-04-09', 208000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(100, 1, '2026-05-12', 126000, 'Lingk Kramat Jaya RT.07/03 Kec.KESAMBI Kota/Kab.CIREBON Prov.JAWA BARAT Expedisi.jne REG', 2),
+(106, 1, '2026-06-01', 49000, ' Expedisi.jne CTCYES', 1);
 
 -- --------------------------------------------------------
 
@@ -444,6 +455,7 @@ CREATE TABLE `obat_masuk` (
   `id_obat_masuk` int(11) NOT NULL,
   `id_supplier` int(11) NOT NULL,
   `tgl_masuk` varchar(15) NOT NULL,
+  `tgl_pesan` varchar(15) NOT NULL,
   `total_transaksi` varchar(15) NOT NULL,
   `status_masuk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -452,12 +464,8 @@ CREATE TABLE `obat_masuk` (
 -- Dumping data for table `obat_masuk`
 --
 
-INSERT INTO `obat_masuk` (`id_obat_masuk`, `id_supplier`, `tgl_masuk`, `total_transaksi`, `status_masuk`) VALUES
-(1, 1, '2026-03-30', '60000', 2),
-(2, 1, '2026-03-30', '30000', 2),
-(3, 1, '2026-04-10', '80000', 2),
-(4, 1, '2026-04-14', '520000', 2),
-(5, 1, '2026-05-05', '1300000', 0);
+INSERT INTO `obat_masuk` (`id_obat_masuk`, `id_supplier`, `tgl_masuk`, `tgl_pesan`, `total_transaksi`, `status_masuk`) VALUES
+(1, 1, '2026-05-31', '2026-05-31', '2600000', 2);
 
 -- --------------------------------------------------------
 
@@ -482,7 +490,7 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `fullname`, `jk`, `alamat_detail`, `alamat_pengiriman`, `no_hp`, `username`, `password`, `kode`) VALUES
-(1, 'Pelanggan A', 'Perempuan', 'Jln. SIliwangi no. 35', '', '0834200751', 'pelanggan_a', 'pelanggan_a', 0),
+(1, 'Pelanggan A', 'Perempuan', 'Jln. SIliwangi no. 35', ' Kec. KUNINGAN Kota/Kab. KUNINGAN Prov. JAWA BARAT', '0834200751', 'pelanggan_a', 'pelanggan_a', 1224),
 (2, 'Pelanggan B', '', '', '', '085848784', 'pelanggan_b', 'pelanggan_b', 0),
 (3, 'Pelanggan C', '', '', '', '0832641150', 'pelanggan_c', 'pelanggan_c', 0),
 (4, 'Pelanggan D', '', '', '', '0835395403', 'pelanggan_d', 'pelanggan_d', 0),
@@ -587,19 +595,19 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `analisis`
 --
 ALTER TABLE `analisis`
-  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `detail_keluar`
 --
 ALTER TABLE `detail_keluar`
-  MODIFY `id_detail_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id_detail_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `detail_masuk`
 --
 ALTER TABLE `detail_masuk`
-  MODIFY `id_detail_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_detail_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `obat`
@@ -611,13 +619,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT for table `obat_keluar`
 --
 ALTER TABLE `obat_keluar`
-  MODIFY `id_obat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_obat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `obat_masuk`
 --
 ALTER TABLE `obat_masuk`
-  MODIFY `id_obat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_obat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`

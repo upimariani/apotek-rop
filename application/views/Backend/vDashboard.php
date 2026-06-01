@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12 col-xl-8">
+			<div class="col-md-12 col-xl-12">
 				<h5 class="mb-3">Informasi Reorder Point</h5>
 				<?php
 				//menampilkan informasi notif
@@ -75,9 +75,7 @@
 								<strong>Segera Pesan!</strong> <?= $value->nama_obat ?>
 							</div>
 
-							<a href="<?= base_url('Backend/cPemesananObat/pesan/' . $value->id_obat) ?>" class="btn btn-sm btn-danger">
-								Pesan
-							</a>
+
 
 						</div>
 				<?php
@@ -92,9 +90,13 @@
 									<tr>
 										<th>No</th>
 										<th>Nama Produk</th>
+										<th>Nama Supplier</th>
+										<th>Lead Time</th>
+										<th>Tanggal Kedaluarsa</th>
 										<th>Total Stok</th>
 										<th>ROP</th>
 										<th>Status</th>
+										<th>Pesan</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -106,8 +108,11 @@
 										<tr>
 											<td><?= $no++ ?></td>
 											<td><?= $value->nama_obat ?></td>
-											<td><?= number_format($value->stok) ?></td>
-											<td><?= number_format($value->rop) ?></td>
+											<td><?= $value->nama_supplier ?></td>
+											<td><?= $value->lead_time ?> hari</td>
+											<td><?= $value->tgl_kedaluarsa_terbaru ?></td>
+											<td><?= number_format($value->stok) ?> <?= $value->keterangan ?></td>
+											<td><?= number_format($value->rop) ?> <?= $value->keterangan ?></td>
 											<td>
 												<?php
 												if ($value->stok <= $value->rop) {
@@ -117,20 +122,27 @@
 												}
 												?>
 											</td>
+											<td>
+												<?php
+												if ($value->stok <= $value->rop) {
+												?>
+													<a href="<?= base_url('Backend/cPemesananObat/pesan') ?>" class="btn btn-sm btn-danger">
+														Pesan
+													</a>
+												<?php
+												}
+												?>
+											</td>
 										</tr>
 									<?php
 									}
 									?>
-
-
-
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>

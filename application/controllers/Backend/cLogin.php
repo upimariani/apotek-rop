@@ -36,7 +36,7 @@ class cLogin extends CI_Controller
 					'id_supplier' => $query->id_supplier
 				);
 				$this->session->set_userdata($array);
-				redirect('Backend/cDashboard');
+				redirect('Backend/cObat');
 			} else {
 				$this->session->set_flashdata('error', 'Username dan Password Anda Salah!');
 				redirect('Backend/cLogin');

@@ -102,7 +102,7 @@
 								foreach ($this->cart->contents() as $key => $value) {
 									$qty += $value['qty'];
 								}
-								if ($qty != '0') {
+								if ($qty != 0) {
 								?>
 									<a href="<?= base_url('Pelanggan/cCart') ?>">
 										<span class="text-muted">Rp. <?= number_format($this->cart->total()) ?></span><i class="flaticon-shopping-cart-black-shape"></i><span class="badge badge-success"><?= $qty ?></span>
@@ -110,6 +110,10 @@
 								<?php
 								}
 								?>
+
+							</div>
+							<div class="hearer_icon d-flex align-items-center">
+								<a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
 
 							</div>
 						<?php
@@ -120,6 +124,14 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="search_input" id="search_input_box">
+			<div class="container ">
+				<form action="<?= base_url('Pelanggan/cProduk') ?>" method="get" class="d-flex justify-content-between search-inner">
+					<input type="text" name="keyword" class="form-control" id="search_input" placeholder="Search Here">
+					<button type="submit" class="btn"></button>
+					<span class="ti-close" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
 	</header>
 	<!-- Header part end-->

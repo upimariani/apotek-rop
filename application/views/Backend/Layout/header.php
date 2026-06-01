@@ -51,14 +51,21 @@
 			</div>
 			<div class="navbar-content">
 				<ul class="pc-navbar">
-					<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cDashboard') {
-											echo 'active';
-										}  ?>">
-						<a href="<?= base_url('Backend/cDashboard') ?>" class="pc-link">
-							<span class="pc-micon"><i class="ti ti-dashboard"></i></span>
-							<span class="pc-mtext">Dashboard</span>
-						</a>
-					</li>
+					<?php
+					if ($this->session->userdata('id_user') != '2') {
+					?>
+						<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cDashboard') {
+												echo 'active';
+											}  ?>">
+							<a href="<?= base_url('Backend/cDashboard') ?>" class="pc-link">
+								<span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+								<span class="pc-mtext">Dashboard</span>
+							</a>
+						</li>
+					<?php
+					}
+					?>
+
 					<?php
 					if ($this->session->userdata('id_user') == '2') {
 					?>
@@ -118,6 +125,14 @@
 							<a href="<?= base_url('Backend/cTransaksiObat') ?>" class="pc-link">
 								<span class="pc-micon"><i class="ti ti-user-plus"></i></span>
 								<span class="pc-mtext">Transaksi Obat</span>
+							</a>
+						</li>
+						<li class="pc-item <?php if ($this->uri->segment(1) == 'Backend' && $this->uri->segment(2) == 'cAnalisis' && $this->uri->segment(3) == 'view') {
+												echo 'active';
+											}  ?>">
+							<a href="<?= base_url('Backend/cAnalisis/view') ?>" class="pc-link">
+								<span class="pc-micon"><i class="ti ti-report-analytics"></i></span>
+								<span class="pc-mtext">Analisis Obat</span>
 							</a>
 						</li>
 					<?php

@@ -1,6 +1,6 @@
 <!-- banner part start-->
 <section class="banner_part">
-	<div class="container">
+	<div class="container mb-5">
 		<div class="row align-items-center">
 			<div class="col-lg-12">
 				<?php

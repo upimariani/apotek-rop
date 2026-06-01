@@ -22,6 +22,16 @@ class cAnalisis extends CI_Controller
 
 			echo $rop . '<br>';
 
+			$dt_analisis = array(
+				'id_obat' => $value->id_obat,
+				'hasil_rop' => $rop,
+				'total_pemakaian' => $jml_perbulan,
+				'jml_perhari' => $jml_perhari,
+				'safety_stok' => $safety_stok
+			);
+			$this->db->insert('analisis', $dt_analisis);
+
+
 			$data = array(
 				'rop' => $rop
 			);
@@ -30,6 +40,15 @@ class cAnalisis extends CI_Controller
 		}
 		$this->session->set_flashdata('success', 'Transaksi berhasil dikonfirmasi');
 		redirect('Backend/cTransaksiObat');
+	}
+	public function view()
+	{
+		$data = array(
+			'analisis' => $this->db->query("SELECT * FROM `analisis` JOIN obat ON analisis.id_obat=obat.id_obat")->result()
+		);
+		$this->load->view('Backend/Layout/header');
+		$this->load->view('Backend/vViewAnalisis', $data);
+		$this->load->view('Backend/Layout/footer');
 	}
 }
 

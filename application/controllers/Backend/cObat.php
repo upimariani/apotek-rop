@@ -44,7 +44,8 @@ class cObat extends CI_Controller
 				'harga_perbox' => $this->input->post('harga_paket'),
 				'stok' => $this->input->post('stok'),
 				'sat_supplier' => $this->input->post('stok_paket'),
-				'lead_time' => $this->input->post('lead_time'),
+				// 'lead_time' => $this->input->post('lead_time'),
+				'deskripsi' => $this->input->post('deskripsi'),
 				'gambar' => $upload_data['file_name'],
 			);
 			$this->mObat->insert($data);
@@ -78,7 +79,8 @@ class cObat extends CI_Controller
 				'harga_perbox' => $this->input->post('harga_paket'),
 				'stok' => $this->input->post('stok'),
 				'sat_supplier' => $this->input->post('stok_paket'),
-				'lead_time' => $this->input->post('lead_time'),
+				// 'lead_time' => $this->input->post('lead_time'),
+				'deskripsi' => $this->input->post('deskripsi'),
 				'gambar' => $upload_data['file_name'],
 			);
 			$this->mObat->update($id, $data);
@@ -94,7 +96,8 @@ class cObat extends CI_Controller
 			'harga_perbox' => $this->input->post('harga_paket'),
 			'stok' => $this->input->post('stok'),
 			'sat_supplier' => $this->input->post('stok_paket'),
-			'lead_time' => $this->input->post('lead_time')
+			// 'lead_time' => $this->input->post('lead_time')
+			'deskripsi' => $this->input->post('deskripsi')
 		);
 		$this->mObat->update($id, $data);
 		$this->session->set_flashdata('success', 'Data Obat berhasil diperbaharui!');

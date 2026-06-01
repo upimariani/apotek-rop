@@ -51,7 +51,7 @@ class cProfile extends CI_Controller
 			//kode
 			$id_kecamatan = $this->input->post('id_kec');
 			$data = array(
-				'alamat_pengiriman' => $provinsi . ' Kota/Kab. ' . $kota . ' Kec. ' . $kecamatan,
+				'alamat_pengiriman' => ' Kec. ' . $kecamatan . ' Kota/Kab. ' . $kota . ' Prov. ' . $provinsi,
 				'kode' => $id_kecamatan
 			);
 			// var_dump($data);

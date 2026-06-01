@@ -34,17 +34,15 @@
 					<div class="col-lg-4">
 						<div class="card tbl-card">
 							<div class="card-body">
-								<form action="<?= base_url('Backend/cPemesananObat/addtocart/' . $obat->id_obat) ?>" method="POST">
+								<form action="<?= base_url('Backend/cPemesananObat/addtocart') ?>" method="POST">
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Nama Obat</label>
-										<select class="form-control" name="obat" disabled>
+										<select class="form-control" name="obat">
 											<option value="">---Pilih Obat---</option>
 											<?php
 											foreach ($dt_obat as $key => $value) {
 											?>
-												<option value="<?= $value->id_obat ?>" <?php if ($value->id_obat == $obat->id_obat) {
-																							echo 'selected';
-																						} ?>><?= $value->nama_obat ?></option>
+												<option value="<?= $value->id_obat ?>"><?= $value->nama_obat ?></option>
 											<?php
 											}
 											?>
@@ -72,6 +70,7 @@
 									<thead>
 										<tr>
 											<th>No</th>
+											<th>No</th>
 											<th>Produk</th>
 											<th>Harga</th>
 											<th>Quantity</th>
@@ -87,16 +86,18 @@
 										?>
 											<tr>
 												<td><?= $no++ ?>.</td>
+												<td><?= $value['options']['nama_supplier'] ?></td>
 												<td><?= $value['name'] ?></td>
 												<td>Rp. <?= number_format($value['price']) ?></td>
 												<td><?= $value['qty'] ?>x</td>
-												<td>Rp. <?= number_format($value['qty'] * $value['price'])  ?></td>
-												<td><a href="<?= base_url('Backend/cPemesananObat/delete/' . $value['rowid']) ?>">Hapus</a></td>
+												<td>Rp. <?= number_format($value['subtotal']) ?></td>
+												<td>
+													<a href="<?= base_url('Backend/cPemesananObat/delete/' . $value['rowid']) ?>">
+														Hapus
+													</a>
+												</td>
 											</tr>
-										<?php
-										}
-										?>
-
+										<?php } ?>
 									</tbody>
 									<tfoot>
 										<tr>
@@ -105,7 +106,7 @@
 										</tr>
 										<tr>
 											<td></td>
-											<td><a href="<?= base_url('Backend/cPemesananObat/order/' . $obat->id_supplier) ?>" class="btn btn-success">Order Supplier</a></td>
+											<td><a href="<?= base_url('Backend/cPemesananObat/order') ?>" class="btn btn-success">Order Supplier</a></td>
 										</tr>
 
 									</tfoot>

@@ -8,13 +8,18 @@ class cProduk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mObat');
+		$this->load->model('mProduk');
 	}
 
 	public function index()
 	{
-		$data = array(
-			'obat' => $this->db->query("SELECT * FROM `obat`")->result()
-		);
+		$keyword = $this->input->get('keyword');
+
+		if ($keyword) {
+			$data['obat'] = $this->mProduk->search_obat($keyword);
+		} else {
+			$data['obat'] = $this->mProduk->get_all_produk();
+		}
 		$this->load->view('Pelanggan/Layout/header');
 		$this->load->view('Pelanggan/vProduk', $data);
 		$this->load->view('Pelanggan/Layout/footer');
